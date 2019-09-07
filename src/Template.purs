@@ -44,7 +44,9 @@ initialState _ = unit
 render :: State -> H.ComponentHTML Action ChildSlots MonadType
 render st =
   H.div_
-  [ H.text "stuff" ]
+  [ H.elClassAttr "button" "button is-primary"
+    [ H.onClick \_ -> Nothing ] [ H.text "I'm a useless button!" ]
+  ]
 
 handleAction :: Action
               -> H.HalogenM State Action ChildSlots Message MonadType Unit

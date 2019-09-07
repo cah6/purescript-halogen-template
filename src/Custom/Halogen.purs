@@ -11,7 +11,7 @@ module Custom.Halogen
 
 import Halogen
 
-import Custom.HalogenUtils (class_, elClass)
+import Custom.HalogenUtils (class_, elClass, elClassAttr)
 
 import Halogen.Aff (HalogenIO, awaitBody, awaitLoad, runHalogenAff, selectElement)
 
