@@ -2,8 +2,8 @@
   "private": true,
   "scripts": {
     "build": "spago build",
-    "bundle": "spago bundle-app --main Main --to docs/app.js && parcel build assets/index.html",
-    "serve": "yarn bundle && parcel serve assets/index.html --open"
+    "bundle": "spago bundle-app --main Main --to docs/app.js && parcel build docs/index.html",
+    "serve": "yarn bundle && parcel serve docs/index.html --open"
   },
   "devDependencies": {
     "parcel-bundler": "^1.12.3",
