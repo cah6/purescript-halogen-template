@@ -2,7 +2,7 @@
   "private": true,
   "scripts": {
     "build": "spago build",
-    "bundle": "spago bundle-app --main Main --to dist/app.js && parcel build assets/index.html",
+    "bundle": "spago bundle-app --main Main --to docs/app.js && parcel build assets/index.html",
     "serve": "yarn bundle && parcel serve assets/index.html --open"
   },
   "devDependencies": {
