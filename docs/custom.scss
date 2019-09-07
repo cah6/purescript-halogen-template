@@ -1,2 +1,7 @@
 @charset "utf-8";
+
+.button {
+  @extend .is-primary;
+}
+
 @import "./bulma/bulma.sass";

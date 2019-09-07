@@ -28,7 +28,8 @@ type ChildSlots = ()
 slotName :: SProxy "_t"
 slotName = SProxy
 
-component :: H.Component H.HTML QueryType Input Message MonadType
+component ::
+     H.Component H.HTML QueryType Input Message Aff
 component =
     H.mkComponent
       { initialState
@@ -41,15 +42,18 @@ component =
 initialState :: Input -> State
 initialState _ = unit
 
-render :: State -> H.ComponentHTML Action ChildSlots MonadType
+render ::
+     State
+  -> H.ComponentHTML Action ChildSlots Aff
 render st =
   H.div_
-  [ H.elClassAttr "button" "button is-primary"
-    [ H.onClick \_ -> Nothing ] [ H.text "I'm a useless button!" ]
+  [ H.elClassAttr "button" "button"
+    [ H.onClick \_ -> Nothing ] [ H.text "I'm a useless button!!" ]
   ]
 
-handleAction :: Action
-              -> H.HalogenM State Action ChildSlots Message MonadType Unit
+handleAction ::
+     Action
+  -> H.HalogenM State Action ChildSlots Message Aff Unit
 handleAction = case _ of
   Receive input -> do
     pure unit

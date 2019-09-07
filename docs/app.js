@@ -8040,7 +8040,7 @@ var PS = {};
   var render = function (st) {
       return Halogen_HTML_Elements.div_([ Custom_HalogenUtils.elClassAttr("button")("button is-primary")([ Halogen_HTML_Events.onClick(function (v) {
           return Data_Maybe.Nothing.value;
-      }) ])([ Halogen_HTML_Core.text("I'm a useless button!") ]) ]);
+      }) ])([ Halogen_HTML_Core.text("I'm a useless button!!") ]) ]);
   };
   var initialState = function (v) {
       return Data_Unit.unit;
