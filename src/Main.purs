@@ -10,4 +10,4 @@ import Template as T
 main :: Effect Unit
 main = HA.runHalogenAff do
   body <- HA.awaitBody
-  runUI T.component unit body
+  runUI T.component { placeholder: "" } body

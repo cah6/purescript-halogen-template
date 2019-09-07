@@ -1,6 +1,6 @@
 module Custom.Halogen
   ( module Halogen
-  , module Custom.HalogenUtils
+  , module Custom.Halogen.Utils
   , module Halogen.Aff
   , module Halogen.HTML
   , module Halogen.HTML.Core
