@@ -1,11 +1,10 @@
 -- | A barebones template component
 module Template
   ( component
-  , QueryType(..)
+  , Query(..)
   , Input
   , Message
-  , Slot
-  , slotName
+  , Slot(..)
   )
   where
 
@@ -13,23 +12,26 @@ import Custom.Prelude
 
 import Custom.Halogen as H
 
-type State = Unit
+type State =
+  { placeholder :: String
+  }
 data Action
-  = DoStuff
-  | Receive Input
+  = SetState State
 
-type QueryType = Const Void
-type Input = Unit
+data Query a
+  = GetState a
+type Input =
+  { placeholder :: String
+  }
 type Message = Void
-type MonadType = Aff
-type Slot = H.Slot QueryType Message
-type ChildSlots = ()
+type Slot = H.Slot Query Message
 
-slotName :: SProxy "_t"
-slotName = SProxy
+type ChildSlots =
+  ( _default :: H.Slot (Const Void) Void Unit
+  )
 
 component ::
-     H.Component H.HTML QueryType Input Message Aff
+     H.Component H.HTML Query Input Message Aff
 component =
     H.mkComponent
       { initialState
@@ -40,7 +42,9 @@ component =
       }
 
 initialState :: Input -> State
-initialState _ = unit
+initialState input =
+  { placeholder: ""
+  }
 
 render ::
      State
@@ -49,13 +53,12 @@ render st =
   H.div_
   [ H.elClassAttr "button" "button"
     [ H.onClick \_ -> Nothing ] [ H.text "I'm a useless button!!" ]
+  -- , H.slot _default unit Child.component unit absurd
   ]
 
 handleAction ::
      Action
   -> H.HalogenM State Action ChildSlots Message Aff Unit
 handleAction = case _ of
-  Receive input -> do
-    pure unit
-  DoStuff -> do
-    pure unit
+  SetState st -> do
+    H.put st

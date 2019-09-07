@@ -1,4 +1,4 @@
-module Custom.HalogenUtils where
+module Custom.Halogen.Utils where
 
 import Prelude
 

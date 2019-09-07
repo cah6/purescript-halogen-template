@@ -17,6 +17,7 @@ module Custom.Prelude
   , module Effect.Aff.Class
   , module Effect.Class
   , module Foreign
+  , _default
   , undefined
   ) where
 
@@ -63,3 +64,5 @@ import Unsafe.Coerce (unsafeCoerce)
 undefined :: forall a. a
 undefined = unsafeCoerce "Not implemented"
 
+_default :: SProxy "_default"
+_default = SProxy
